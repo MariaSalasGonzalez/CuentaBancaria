@@ -1,0 +1,40 @@
+import java.time.LocalDate;
+
+public abstract class Transferencia {
+
+    private LocalDate fecha;
+    private double monto;
+    private String cuentaDestino;
+
+    public Transferencia(LocalDate fecha, double monto, String cuentaDestino) {
+        this.fecha = fecha;
+        this.monto = monto;
+        this.cuentaDestino = cuentaDestino;
+    }
+
+    public abstract void imprimirDatos();
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
+    public double getMonto() {
+        return monto;
+    }
+
+    public void setMonto(double monto) {
+        this.monto = monto;
+    }
+
+    public String getCuentaDestino() {
+        return cuentaDestino;
+    }
+
+    public void setCuentaDestino(String cuentaDestino) {
+        this.cuentaDestino = cuentaDestino;
+    }
+}

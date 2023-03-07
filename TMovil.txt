@@ -1,0 +1,17 @@
+import java.time.LocalDate;
+
+public class TMovil extends Transferencia{
+
+    public TMovil(LocalDate fecha, double monto, String cuentaDestino) {
+        super(fecha, monto, cuentaDestino);
+    }
+
+    public void notificar(){
+        System.out.println("Se ha transferido " + getMonto() + " al numero " + getCuentaDestino());
+    }
+
+    @Override
+    public void imprimirDatos() {
+        System.out.println("Fecha: " + getFecha().toString() + " Numero Celular: " + getCuentaDestino() + " Monto: " + getMonto());
+    }
+}

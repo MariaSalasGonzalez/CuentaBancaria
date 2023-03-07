@@ -1,0 +1,102 @@
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+public class CuentaBancaria {
+
+    private int numCuenta;
+    private final int cedula;
+    private double saldo;
+    private double limiteRetiro;
+    private ArrayList<Transferencia> transferencias;
+
+    public CuentaBancaria(int numCuenta, int cedula, double saldo, double limiteRetiro) {
+        this.numCuenta = numCuenta;
+        this.cedula = cedula;
+        this.saldo = saldo;
+        this.limiteRetiro = limiteRetiro;
+        transferencias = new ArrayList<>();
+    }
+
+    public void transferenciaMovil(double monto, String cuentaDestino){
+        TMovil tMovil = new TMovil(fechaHoy(), monto, cuentaDestino);
+        tMovil.notificar();
+        transferencias.add(tMovil);
+    }
+
+    public void transferenciaBancaria(double monto, String cuentaDestino, String nombreBanco, String motivo){
+        TBancaria tBancaria = new TBancaria(fechaHoy(), monto, cuentaDestino, nombreBanco, motivo);
+        transferencias.add(tBancaria);
+    }
+
+    public void imprimirTransferencias(){
+        for(Transferencia t:transferencias){
+            t.imprimirDatos();
+        }
+    }
+
+    private LocalDate fechaHoy(){
+        return LocalDate.now();
+    }
+
+    public void depositarDinero(double deposito){
+        if(deposito > 0){
+            saldo += deposito;
+            System.out.println("Transaccion realizada");
+        }else{
+            System.out.println("Monto debe ser mayor a 0");
+        }
+    }
+
+    public void retirarDinero(double retiro){
+        if(retiro > limiteRetiro){
+            System.out.println("No es posible realizar la transaccion, existe un limite de retiro de: " + limiteRetiro);
+        }else if(retiro > saldo){
+            System.out.println("No hay suficientes fondos");
+        }else if(retiro < 0){
+            System.out.println("Monto invalido");
+        }else {
+            saldo -= retiro;
+            System.out.println("Transaccion realizada");
+        }
+    }
+
+    public int getNumCuenta() {
+        return numCuenta;
+    }
+
+    public void setNumCuenta(int numCuenta) {
+        this.numCuenta = numCuenta;
+    }
+
+    public int getCedula() {
+        return cedula;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    private void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public double getLimiteRetiro() {
+        return limiteRetiro;
+    }
+
+    public void setLimiteRetiro(double limiteRetiro) {
+        if(limiteRetiro >= 0){
+            this.limiteRetiro = limiteRetiro;
+        }else{
+            System.out.println("Limite invalido");
+        }
+    }
+
+    public ArrayList<Transferencia> getTransferencias() {
+        return transferencias;
+    }
+
+    public void setTransferencias(ArrayList<Transferencia> transferencias) {
+        this.transferencias = transferencias;
+    }
+}

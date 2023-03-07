@@ -1,0 +1,16 @@
+1.	Que estructuras ofrece Java para representar abstracciones y encapsulamiento.
+		Clases y modificadores de acceso
+2.	Explique con sus propias palabras la diferencia entre una clase y una instancia.
+		Una clase provee la estructura por la cual se van a instanciar los objetos, contiene la definición de los atributos y el comportamiento, la instancia se crea a 		partir de la clase y obtiene una identidad. La clase es el tipo de dato de la instancia.
+3.	Que es lo que muestra el ambiente de tiempo de ejecución de Java cuando no se encuentra en el stack trace un método que atrape una excepción lanzada.
+		Muestra el stack trace, el nombre de la excepción y el mensaje de la excepción.
+4.	Cuantas superclases puede tener una subclase en Java.
+		En Java no hay herencia múltiple, una subclase solo puede heredar de una superclase.
+5.	Mencione la función y tres características de un constructor en Java.
+		Inicializa el objeto a la hora de ser creado.
+		Tiene el mismo nombre de la clase
+		No tiene retorno
+		Es llamado automáticamente cuando se instancia un objeto.
+6.	Explique con sus propias palabras la función de las palabras reservadas this y super.
+		this es una referencia al objeto actual donde se está utilizando
+		super se utiliza para referenciar métodos, atributos y el constructor de la superclase en una herencia
